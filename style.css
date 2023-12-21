@@ -1,0 +1,140 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  color: gray;
+  background: rgb(24, 24, 24);
+  overflow-x: hidden;
+}
+
+
+
+.header {
+  display: grid;
+  place-items: center;
+  position: relative;
+  height: 100svh;
+  width: 100%;
+  
+
+  color: white;
+
+  & h1 {
+    padding: 1rem 0;
+    line-height: 32px;
+  }
+
+  & p {
+    padding: 0.5rem 0;
+    line-height: 24px;
+    font-family: "Courier New", Courier, monospace;
+  }
+}
+
+
+
+.header-image {
+    grid-column: 1/1 !important;
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.5;
+    object-fit: cover;
+    z-index: 1;
+    overflow: hidden;
+
+    transform-origin: top;
+
+    animation: header-image-animation linear;
+    animation-timeline: view();
+    animation-range: exit;
+  }
+
+  @keyframes header-image-animation {
+    25%{
+      opacity: 1;
+    }
+    85%,100%{
+      opacity: 0;
+      scale:3
+    }
+  }
+
+
+
+  .header-title {
+    position: absolute;
+    max-width: 768px;
+    margin: auto 0;
+    text-align: center;
+    z-index: 10;
+
+    opacity: 1;
+
+    animation: fade-out linear;
+    animation-timeline: view();
+    animation-range: exit -200px;
+  }
+  
+  @keyframes fade-out {
+    to {
+      opacity: 0;
+    }
+  }
+  
+  
+
+article {
+  max-width: 768px;
+  margin-left: auto;
+  margin-right: auto;
+
+  & h2 {
+    padding: 2rem 0;
+    text-align: center;
+    color: aqua;
+    font-weight: 700;
+  }
+
+  & p {
+    padding: 0.5rem 0;
+    line-height: 24px;
+    font-family: "Courier New", Courier, monospace;
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  article > img {
+    scale: 0.6;
+    opacity: 0;
+    width: 100%;
+    height: 90%;
+    animation: fade-in linear forwards;
+    animation-timeline: view();
+
+    /* animation-range: 250px 500px; */
+
+    animation-range: entry;
+
+    /* 
+    animation-range-start: contain;
+    animation-range-end: contain;
+
+    --other properties with animation range --
+    animation-range:contain | cover | entry | exit  | ()px ()px;
+    */
+  }
+
+  @keyframes fade-in {
+    to {
+      scale: 1;
+      opacity: 1;
+    }
+  }
+}
+
+
