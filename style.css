@@ -92,6 +92,7 @@ article {
   max-width: 768px;
   margin-left: auto;
   margin-right: auto;
+  padding: 16px 16px;
 
   & h2 {
     padding: 2rem 0;
